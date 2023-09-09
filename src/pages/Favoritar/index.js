@@ -4,16 +4,11 @@ import styles from "./Favoritar.module.css";
 import Card from "../../Components/Card";
 import { useState } from "react";
 import CardsLista from "../../Components/CardsLista";
+import { useFavoritoContext } from "../../Components/Contexto/Favoritos";
+
 
 function Favoritar() {
-  const [favoritos, setFavoritos] = useState([
-    {
-      id: 1,
-      titulo: "O labirinto do Logcat",
-      capa: "https://caelum-online-public.s3.amazonaws.com/2802-react-praticando/img2.png",
-      link: "https://www.youtube.com/embed/ypvGqZGJBls",
-    },
-  ]);
+  const { favorito } = useFavoritoContext();
 
   return (
     <>
@@ -21,7 +16,11 @@ function Favoritar() {
       <Titulo>
         <h1>Meus Favoritos</h1>
       </Titulo>
-      <CardsLista videos={favoritos} />
+      <section className={styles.container}>
+        {favorito.map((fav) => {
+          return <Card {...fav} key={fav.id} />;
+        })}
+      </section>
     </>
   );
 }
