@@ -13,7 +13,7 @@ function AppRoutes() {
         <Route path="/" element={<PaginaBase/>}>
         <Route index element={<Inicio />} />
         <Route path="favoritos" element={<Favoritar/>}/>
-        <Route path="videos/:id" element={<Player/>}></Route>
+        <Route path=":id" element={<Player/>}></Route>
         <Route path="*" element={<NaoEncontrada/>}/>
         </Route>
       </Routes>
